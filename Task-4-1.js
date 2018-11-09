@@ -53,3 +53,39 @@ Array.prototype.myFilter = function () {
 
 arrFilter.myFilter();
 
+// ________________________________________________________________________________________________________________________________________________
+
+// Closure - Create a constructor function which will use closure for working with private data. It should have 2
+// private methods and 2 private props which we can change only with that private methods.
+
+
+function User(name) {
+    this.name = function init() {
+        function displayName() {
+
+            var sayHello = function () {
+                return {
+                    Hello: function () {
+                        alert("Hello, " + name);
+                    }
+                };
+            };
+
+            var qqq = sayHello();
+
+            qqq.Hello();
+        }
+
+        displayName();
+    };
+}
+
+var ivan = new User("Иван");
+
+ivan.name();
+
+// _____
+
+
+
+

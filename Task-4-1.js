@@ -63,10 +63,12 @@ function User(name) {
     this.name = function init() {
         function displayName() {
 
+            var hello = "Hello, ";
+
             var sayHello = function () {
                 return {
                     Hello: function () {
-                        alert("Hello, " + name);
+                        alert(hello + name);
                     }
                 };
             };

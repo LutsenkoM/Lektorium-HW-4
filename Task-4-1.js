@@ -59,34 +59,52 @@ arrFilter.myFilter();
 // private methods and 2 private props which we can change only with that private methods.
 
 
-function User(name) {
-    this.name = function init() {
-        function displayName() {
+function Closure() {
+  this.change = function (x, y, z) {
 
-            var hello = "Hello, ";
+    function module1 () {
 
-            var sayHello = function () {
-                return {
-                    Hello: function () {
-                        alert(hello + name);
-                    }
-                };
-            };
+      function changeCore (newLogin, password, email) {
+        var login;
 
-            var qqq = sayHello();
-
-            qqq.Hello();
+        function names () {
+          var oldLogin = login;
+              login = newLogin;
+          return [ oldLogin, login ]
         }
 
-        displayName();
-    };
+        var loginsArray = names();
+
+        if (password === 111 && email === 'example@gmail.com') {
+          console.log("Login changed from " + loginsArray[0] + " to " + loginsArray[1]);
+        } else {
+          console.log("Login not changed");
+        }
+
+      }
+
+      changeLogin(changeCore);
+
+    }
+
+    function changeLogin (qqq) {
+      qqq(x, y, z);
+    }
+
+    module1 ();
+
+  }
 }
 
-var ivan = new User("Иван");
+var start = new Closure();
 
-ivan.name();
+start.change("NewLogin", 111, "example@gmail.com"); // For change Login
+start.change("NewLogin", 1111, "wrongemail@gmail.com"); // False case, wrong pass and email
 
-// _____
+
+
+
+
 
 
 

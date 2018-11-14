@@ -20,6 +20,7 @@ function Tamagochi(name) {
         console.log(name +"'s" + " Fun " + fun );
         console.log(name +"'s" + " Health " + health );
         console.log(name +"'s" + " Comfort " + comfort );
+        console.log("___________________________________");
       }
 
   var liveStart = setInterval(function() {
@@ -106,8 +107,6 @@ function Tamagochi(name) {
             peetsParameters ();
         }
     };
-
-
 }
 
 var myPet = new Tamagochi("Sharik");

@@ -5,72 +5,118 @@
 
 
 
-function Tamagochi() {
-    var energy = 10,
+function Tamagochi(name) {
+    alert("HI, " + name + "! You was born!")
+
+    var energy = 100,
         food = 100,
         health = 100,
-        fun = 100;
+        fun = 100,
+        comfort = 100;
 
+      function peetsParameters () {
+        console.log(name +"'s" + " Energy " + energy);
+        console.log(name +"'s" + " Food " + food);
+        console.log(name +"'s" + " Fun " + fun );
+        console.log(name +"'s" + " Health " + health );
+        console.log(name +"'s" + " Comfort " + comfort );
+      }
 
+  var liveStart = setInterval(function() {
+         energy -= 1;
+         food -= 2;
+         fun -= 10;
+         peetsParameters ();
 
-    for (var i = 0; i < 1000, energy >=0; i++) {
-        // (function() {
-            setTimeout(function() {
-                energy --;
-                console.log("Energy " + energy);
-                console.log("Food " + food);
-                console.log("Fun " + fun );
+         if ( energy === 50 ) {
+             alert("I'm tired and want sleep!");
+         } else if ( energy === 0) {
+             alert("Your pet die because it was very tired!=(");
+           clearInterval(liveStart);
+         }
 
-                if ( energy === 5 ) {
-                    alert("I'm tired and want sleep!");
-                } else if ( energy === 1) {
-                    alert("Your pet die because it was very tired!=(");
-                    return energy;
-                }
+         if ( food === 80) {
+           alert("I want to drink!");
+         } else if ( food === 50 ) {
+           alert("I want to eat!");
+         } else if ( food === 10 ){
+           health = 50;
+           alert("I want to eat!");
+         } else if ( food === 0 ) {
+           alert("Your pet die because it was very hungry!=(");
+           clearInterval(liveStart);
+         }
 
-            }, i *1000);
-        // })(i);
-    }
+          if ( fun === 80) {
+            alert("I want to play with you!");
+          } else if ( fun === 50 ) {
+            alert("I am very bored!");
+          } else if ( fun === 10 ){
+            alert("Play with me or I'll run away");
+          } else if ( fun === 0 ) {
+            alert("Your pet run away from you!=(");
+            clearInterval(liveStart);
+          }
 
+    }, 60000);
+
+    setInterval(function () {
+         var event = Math.floor(Math.random() * 5) + 1;
+
+         if (event === 1) {
+             health = 10;
+             alert("Your pet is sick! Cure him! Health " + health);
+         } else if (event === 2) {
+             comfort = 10;
+             alert("Your pet poop! Clean up after him! Comfort " + comfort);
+         } else if ( event === 3 ) {
+             alert("I love you!");
+         }
+
+    }, 120000)
 
     return {
-        walk: function () {
+        play: function () {
             energy--;
             food--;
-            fun = 10;
-            console.log("Energy " + energy);
-            console.log("Food " + food);
-            console.log("Fun " + fun );
+            fun = 100;
+            peetsParameters ();
         },
         sleep: function () {
-            energy = 10;
+            energy = 100;
             food--;
             fun--;
-            console.log("Energy " + energy);
-            console.log("Food " + food);
-            console.log("Fun " + fun );
+            peetsParameters ();
         },
         eat: function () {
             energy--;
-            food = 10;
+            food = 100;
             fun--;
-            console.log("Energy " + energy);
-            console.log("Food " + food);
-            console.log("Fun " + fun );
+            peetsParameters ();
+        },
+        cure: function () {
+            health = 100;
+            peetsParameters ();
+        },
+        clean: function () {
+            comfort = 100;
+            peetsParameters ();
         },
         checkStatus: function () {
-            console.log("Energy " + energy);
-            console.log("Food " + food);
-            console.log("Fun " + fun );
+            peetsParameters ();
         }
     };
 
 
 }
 
-var tuzik = new Tamagochi();
+var myPet = new Tamagochi("Sharik");
 
-tuzik.walk();
-tuzik.sleep();
-tuzik.eat();
-// tuzik.checkStatus();
+//Actions for pet
+
+myPet.play();
+myPet.sleep();
+myPet.eat();
+myPet.cure();
+myPet.clean();
+myPet.checkStatus();

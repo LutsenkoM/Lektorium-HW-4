@@ -49,4 +49,4 @@ var tuzik = new Tamagochi();
 tuzik.walk();
 tuzik.sleep();
 tuzik.eat();
-tuzik.checkStatus();
+// tuzik.checkStatus();

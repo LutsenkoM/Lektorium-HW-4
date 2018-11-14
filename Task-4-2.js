@@ -7,18 +7,37 @@
 
 function Tamagochi() {
     var energy = 10,
-        food = 10,
-        fun = 10;
-    
+        food = 100,
+        health = 100,
+        fun = 100;
+
+
+
+    for (var i = 0; i < 1000, energy >=0; i++) {
+        // (function() {
+            setTimeout(function() {
+                energy --;
+                console.log("Energy " + energy);
+                console.log("Food " + food);
+                console.log("Fun " + fun );
+
+                if ( energy === 5 ) {
+                    alert("I'm tired and want sleep!");
+                } else if ( energy === 1) {
+                    alert("Your pet die because it was very tired!=(");
+                    return energy;
+                }
+
+            }, i *1000);
+        // })(i);
+    }
+
+
     return {
         walk: function () {
-            var newEnergy = energy--;
+            energy--;
             food--;
             fun = 10;
-            if (newEnergy == 0) {
-                console.log("Your pet is dead");
-            }
-
             console.log("Energy " + energy);
             console.log("Food " + food);
             console.log("Fun " + fun );
@@ -38,11 +57,16 @@ function Tamagochi() {
             console.log("Energy " + energy);
             console.log("Food " + food);
             console.log("Fun " + fun );
+        },
+        checkStatus: function () {
+            console.log("Energy " + energy);
+            console.log("Food " + food);
+            console.log("Fun " + fun );
         }
     };
 
 
-};
+}
 
 var tuzik = new Tamagochi();
 
